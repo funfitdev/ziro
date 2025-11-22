@@ -8,7 +8,7 @@ const updateRoot = hydrate({
   // This sends a POST request to the server, and updates the page with the response.
   async callServer(id, args) {
     const { result, root } = await fetchRSC<{ root: ReactNode; result: any }>(
-      `${location.pathname}}`,
+      `${location.pathname}`,
       {
         method: "POST",
         headers: {

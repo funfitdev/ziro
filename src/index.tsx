@@ -17,6 +17,10 @@ app.get("/users", async (req, res) => {
   await renderRequest(req, res, <UsersList />, { component: UsersList });
 });
 
+app.post("/users", async (req, res) => {
+  await renderRequest(req, res, <UsersList />, { component: UsersList });
+});
+
 app.listen(3000, () => {
   console.log("Server listening on port http://localhost:3000");
 });

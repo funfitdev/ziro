@@ -1,13 +1,11 @@
 "use server-entry";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import { getUsers } from "./api";
+import { UsersListClient } from "./users-list-client";
 
 export default async function UsersList() {
-  const users = [
-    { id: 1, name: "John Doe", email: "john@example.com", gender: "male" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", gender: "female" },
-    { id: 3, name: "Alex Johnson", email: "alex@example.com", gender: "other" },
-  ];
+  const users = await getUsers();
 
   return (
     <Layout>
@@ -17,40 +15,7 @@ export default async function UsersList() {
           <Button>Create User</Button>
         </div>
 
-        <div className="bg-white rounded-lg shadow">
-          <table className="w-full">
-            <thead className="border-b">
-              <tr className="bg-gray-50">
-                <th className="text-left p-4 font-semibold">Name</th>
-                <th className="text-left p-4 font-semibold">Email</th>
-                <th className="text-left p-4 font-semibold">Gender</th>
-                <th className="text-left p-4 font-semibold">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr key={user.id} className="border-b hover:bg-gray-50">
-                  <td className="p-4">{user.name}</td>
-                  <td className="p-4">{user.email}</td>
-                  <td className="p-4 capitalize">{user.gender}</td>
-                  <td className="p-4">
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
-                        View
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        Edit
-                      </Button>
-                      <Button variant="destructive" size="sm">
-                        Delete
-                      </Button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <UsersListClient initialUsers={users} />
       </div>
     </Layout>
   );
