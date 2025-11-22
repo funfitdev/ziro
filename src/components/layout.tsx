@@ -1,7 +1,5 @@
-import { Header } from "@/components/header";
 import "../global.css";
 import "@/lib/client/client-entry";
-import { DelayConfigurator } from "@/components/delay-configurator";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -19,11 +17,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         />
       </head>
       <body className="min-h-screen flex flex-col flex-grow scrollbar-stable scrollbar-both-edges">
-        <div className="container mx-auto w-full max-w-3xl flex flex-col flex-grow">
-          <Header />
-          <main className="p-3 flex flex-col gap-6 flex-grow">{children}</main>
-        </div>
-        <DelayConfigurator />
+        {children}
       </body>
     </html>
   );
