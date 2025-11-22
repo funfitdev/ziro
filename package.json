@@ -1,0 +1,42 @@
+{
+  "name": "ziro",
+  "module": "src/index.ts",
+  "private": true,
+  "scripts": {
+    "watch": "parcel watch",
+    "dev": "bun --watch dist/server.js",
+    "start": "bun --watch dist/server.js",
+    "build": "parcel build --reporter @parcel/reporter-bundle-analyzer",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@parcel/reporter-bundle-analyzer": "^2.16.1",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/bun": "latest",
+    "@types/express": "^5.0.5",
+    "@types/react": "^19.2.6",
+    "@types/react-dom": "^19.2.3",
+    "parcel": "^2.16.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@parcel/rsc": "^2.16.1",
+    "express": "^5.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "server": "dist/server.js",
+  "targets": {
+    "server": {
+      "source": "src/index.tsx",
+      "context": "react-server",
+      "includeNodeModules": {
+        "express": false
+      }
+    }
+  }
+}
